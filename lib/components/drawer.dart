@@ -3,21 +3,15 @@ import 'package:choda_villa/pages/settings_page.dart';
 import 'package:flutter/material.dart';
 
 class MyDrawer extends StatelessWidget {
-  final String text;
-  final IconData? icons;
-  final void Function()? onTap;
+  
 
-  const MyDrawer({
-    super.key,
-    required this.text,
-    required this.icons,
-    required this.onTap, 
-    });
+  const MyDrawer({super.key});
 
+    
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.grey[200],
+      backgroundColor: Theme.of(context).colorScheme.background,
       child: Column(
         children: [
           // logo
@@ -39,31 +33,33 @@ class MyDrawer extends StatelessWidget {
 
           // home
           MyDrawerTile(
-            text: 'HOME',
+            text: 'H O M E',
             icon: Icons.home,
             onTap: () => Navigator.pop(context),
           ),
 
           // settings
           MyDrawerTile(
-            text: 'SETTINGS',
-            icon: Icons.settings,
-            onTap: () => Navigator.push(
-              context, MaterialPageRoute(
-                builder: (
-                  (context) => const SettingsPage()
-                )
-              )
+              text: 'S E T T I N G S',
+              icon: Icons.settings,
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SettingsPage()
+                  )
+                );
+              }
             ),
-          ),
 
           const Spacer(),
 
           // logout
           MyDrawerTile(
-            text: 'LOGOUT',
+            text: 'L O G O U T',
             icon: Icons.logout,
-            onTap: (){},
+            onTap: () {},
           ),
 
           const SizedBox(height: 25),
